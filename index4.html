@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jewelry Landing Page</title>
+    <link rel="stylesheet" href="style4.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div>
+          <img src="img/logo1.png" alt="logo" class="logo" />
+          <p style="color: #535656">
+            We specialize in supplying exquisite jewelry collections for
+            retailers, channel partners, and manufacturers. Our designs blend
+            tradition with contemporary trends to elevate your brand offering.
+            Partner with us and shine brighter in every showcase.
+          </p>
+        </div>
+        <nav class="menu">
+          <a href="#" class="nav-item" data-type="Manufacturer">Manufacturer</a>
+          <a href="#" class="nav-item" data-type="Channel Partner"
+            >Channel Partner</a
+          >
+          <a href="#" class="nav-item" data-type="Retailer">Retailer</a>
+        </nav>
+      </div>
+      <div class="image">
+        <img src="img/jwellery.png" alt="Jewelry" />
+      </div>
+    </div>
+
+    <!-- Form Modal -->
+    <div class="form-overlay" id="formOverlay">
+      <div class="form-container" id="formContainer">
+        <h2 id="formTitle"></h2>
+        <div
+          id="formContentText"
+          style="
+            display: none;
+            color: #fff;
+            text-align: center;
+            max-width: 500px;
+            margin-bottom: 20px;
+            font-size: 0.75rem;
+          "
+        ></div>
+
+        <form id="userForm">
+          <input type="text" id="userName" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone Number" required />
+          <select required>
+            <option value="">Select Location (India)</option>
+            <option>Tamil Nadu</option>
+            <option>Karnataka</option>
+            <option>Maharashtra</option>
+            <option>Delhi</option>
+            <option>Kerala</option>
+          </select>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div
+        id="thankYouMessage"
+        style="display: none; text-align: center; color: white"
+      >
+        <div class="tick-circle">
+          <svg class="tick-svg" viewBox="0 0 52 52">
+            <circle class="circle" cx="26" cy="26" r="25" fill="none" />
+            <path class="check" fill="none" d="M14 27l7 7 16-16" />
+          </svg>
+        </div>
+        <p style="font-size: 1.5rem; margin-top: 10px">
+          Thank you, <span id="userNameDisplay"></span>! We’ll get back to you
+          soon.
+        </p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script4.js"></script>
+  </body>
+</html>
