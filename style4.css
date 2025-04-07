@@ -281,4 +281,7 @@ input::placeholder {
   .menu {
     align-items: center;
   }
+  .form-container {
+    padding: 15px;
+  }
 }
