@@ -243,13 +243,11 @@ input::placeholder {
 }
 
 #formContentText {
-  max-width: 500px;
-  text-align: center;
-  font-size: 18px;
-  color: white;
-  margin-bottom: 20px;
-  line-height: 1.5;
   display: none;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 0.75rem;
 }
 
 .form-content-text {
@@ -266,6 +264,34 @@ input::placeholder {
     transform: translateY(0);
   }
 }
+@media (min-width: 1500px) {
+  .logo {
+    width: 60%;
+  }
+  .content-p p {
+    font-size: 25px;
+  }
+  .menu a {
+    width: 250px;
+    font-size: 1.4rem;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .form-container {
+    max-width: 700px;
+  }
+  #formTitle {
+    font-size: 35px;
+  }
+  #formContentText {
+    font-size: 1.3rem;
+  }
+  .form-container input,
+  .form-container select,
+  .form-container button {
+    font-size: 1.2rem;
+  }
+}
 @media (max-width: 768px) {
   body {
     overflow: auto;
@@ -277,6 +303,7 @@ input::placeholder {
   .logo {
     display: flex;
     justify-self: center;
+    width: 55%;
   }
   .menu {
     align-items: center;
