@@ -311,4 +311,7 @@ input::placeholder {
   .form-container {
     padding: 15px;
   }
+  #formOverlay {
+    padding: 0;
+  }
 }
