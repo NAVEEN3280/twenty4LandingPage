@@ -17,7 +17,7 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  background-color: rgb(0, 170, 176, 0.1);
+  background-color: rgb(0, 170, 176, 0.05);
   padding: 20px;
   overflow: hidden;
 }
@@ -91,7 +91,7 @@ body {
 }
 
 .image:hover {
-  transform: rotateY(8deg) rotateX(18deg);
+  transform: rotateY(-12deg) rotateX(20deg);
 }
 .image img {
   max-width: 100%;
@@ -269,15 +269,15 @@ input::placeholder {
 }
 @media (min-width: 1500px) {
   .logo {
-    width: 60%;
+    width: 50%;
   }
   .content-p p {
-    font-size: 25px;
+    font-size: 20px;
     margin: 2rem;
   }
   .menu a {
-    width: 250px;
-    font-size: 1.4rem;
+    width: 200px;
+    font-size: 1rem;
     margin: 1rem;
     padding: 1rem;
   }
