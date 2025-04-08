@@ -5,6 +5,23 @@ const formTitle = document.getElementById("formTitle");
 const form = document.getElementById("userForm");
 const thankYouMessage = document.getElementById("thankYouMessage");
 const formContentText = document.getElementById("formContentText");
+const downloadBtn = document.createElement("button");
+downloadBtn.textContent = "Download User Data";
+downloadBtn.style.display = "none";
+downloadBtn.style.position = "fixed";
+downloadBtn.style.bottom = "20px";
+downloadBtn.style.right = "20px";
+downloadBtn.style.zIndex = "9999";
+downloadBtn.style.padding = "10px 20px";
+downloadBtn.style.background = "#333";
+downloadBtn.style.color = "#fff";
+downloadBtn.style.border = "none";
+downloadBtn.style.borderRadius = "5px";
+downloadBtn.style.cursor = "pointer";
+document.body.appendChild(downloadBtn);
+
+// Collect all users
+let collectedUsers = [];
 
 // Jewelry image entrance animation
 gsap.fromTo(
@@ -39,6 +56,7 @@ navItems.forEach((item) => {
 
     const type = item.dataset.type;
     formTitle.textContent = `${type} Registration`;
+    document.getElementById("userType").value = type;
 
     // Update and animate content text
     const contentText = formContent[type];
@@ -78,38 +96,56 @@ navItems.forEach((item) => {
 
 formOverlay.addEventListener("click", (e) => {
   if (e.target === formOverlay) {
-    gsap.to(formContainer, {
-      scale: 0.8,
-      opacity: 0,
-      duration: 0.3,
-      onComplete: () => {
-        formOverlay.style.display = "none";
-      },
-    });
-
-    gsap.to(formContentText, {
-      opacity: 0,
-      y: 20,
-      duration: 0.4,
-      onComplete: () => {
-        formContentText.style.display = "none";
-      },
-    });
-
-    navItems.forEach((el) => {
-      gsap.to(el, { x: 0, opacity: 1, duration: 0.5, delay: 0.2 });
-    });
-
-    gsap.to(".image img", { scale: 1, duration: 0.4, ease: "power1.out" });
+    closeForm();
   }
 });
+
+function closeForm() {
+  gsap.to(formContainer, {
+    scale: 0.8,
+    opacity: 0,
+    duration: 0.3,
+    onComplete: () => {
+      formOverlay.style.display = "none";
+    },
+  });
+
+  gsap.to(formContentText, {
+    opacity: 0,
+    y: 20,
+    duration: 0.4,
+    onComplete: () => {
+      formContentText.style.display = "none";
+    },
+  });
+
+  navItems.forEach((el) => {
+    gsap.to(el, { x: 0, opacity: 1, duration: 0.5, delay: 0.2 });
+  });
+
+  gsap.to(".image img", { scale: 1, duration: 0.4, ease: "power1.out" });
+}
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const userNameInput = document.getElementById("userName").value;
+  const userEmailInput = form.querySelector('input[type="email"]').value;
+  const userPhoneInput = form.querySelector('input[type="tel"]').value;
+  const userLocation = form.querySelector("select").value;
+  const userType = document.getElementById("userType").value;
+
   const userNameDisplay = document.getElementById("userNameDisplay");
   userNameDisplay.textContent = userNameInput;
+
+  // Store user data
+  collectedUsers.push({
+    Name: userNameInput,
+    Email: userEmailInput,
+    Phone: userPhoneInput,
+    Location: userLocation,
+    Type: userType,
+  });
 
   gsap.to(formContainer, {
     scale: 0.8,
@@ -155,4 +191,28 @@ form.addEventListener("submit", function (e) {
       }, 5000);
     },
   });
+});
+
+// Secret keyboard shortcut to show download button (Ctrl + Shift + D)
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key === "D") {
+    downloadBtn.style.display = "block";
+  }
+});
+
+// Download Excel file on click
+downloadBtn.addEventListener("click", () => {
+  if (collectedUsers.length === 0) {
+    alert("No user data available.");
+    return;
+  }
+
+  const headers = ["Name", "Email", "Phone", "Location", "Type"];
+  const rows = collectedUsers.map((user) => headers.map((key) => user[key]));
+
+  const worksheet = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+
+  XLSX.writeFile(workbook, "user_data.xlsx");
 });
