@@ -9,6 +9,23 @@
       href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+      #downloadExcel {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background: gold;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        display: none; /* Hidden by default */
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -42,6 +59,8 @@
         <div id="formContentText"></div>
 
         <form id="userForm">
+          <input type="hidden" id="userType" name="userType" />
+
           <input type="text" id="userName" placeholder="Name" required />
           <input type="email" placeholder="Email" required />
           <input type="tel" placeholder="Phone Number" required />
@@ -73,7 +92,8 @@
       </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <button id="downloadExcel" style="display: none">Download Excel</button>
+
     <script src="script4.js"></script>
   </body>
 </html>
