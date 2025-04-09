@@ -18,7 +18,7 @@ body {
   display: flex;
   height: 100vh;
   background-color: rgb(0, 170, 176, 0.05);
-  padding: 20px;
+
   overflow: hidden;
 }
 
@@ -26,7 +26,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .brand {
@@ -46,7 +46,7 @@ body {
   color: #fff;
   text-decoration: none;
   background-color: rgb(0, 170, 176);
-  width: 150px;
+  width: 130px;
   text-align: center;
   margin: 0.5rem;
   padding: 0.5rem;
@@ -86,12 +86,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s ease;
   transform-style: preserve-3d;
 }
 
 .image:hover {
-  transform: rotateY(-12deg) rotateX(20deg);
+  transform: scale(1.07);
 }
 .image img {
   max-width: 100%;
@@ -99,7 +99,7 @@ body {
   border-radius: 20px;
 }
 .logo {
-  width: 40%;
+  width: 30%;
 }
 
 /* Form styles */
@@ -255,6 +255,8 @@ input::placeholder {
 }
 .content-p p {
   margin: 1rem;
+  font-size: 0.8rem;
+  text-align: justify;
 }
 
 @keyframes fadeInUp {
@@ -272,14 +274,14 @@ input::placeholder {
     width: 50%;
   }
   .content-p p {
-    font-size: 20px;
+    font-size: 17px;
     margin: 2rem;
   }
   .menu a {
-    width: 200px;
+    width: 170px;
     font-size: 1rem;
     margin: 1rem;
-    padding: 1rem;
+    padding: 0.7rem;
   }
   .form-container {
     max-width: 700px;
