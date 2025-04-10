@@ -169,7 +169,7 @@ input::placeholder {
   align-self: end;
 }
 #formTitle {
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 20px;
   opacity: 0; /* So it doesn't flash before GSAP animates */
 }
@@ -248,7 +248,7 @@ input::placeholder {
   color: #fff;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
 }
 
 .form-content-text {
